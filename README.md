@@ -1,4 +1,24 @@
 # Deep-Space-Network - Presentation Summary
+
+## Infrastructure Summary
+__________________
+Deep Space Network
+__________________
+|____ |______|___|______________ > 
+|     |______|___|______________ > NOCC
+|     |      |__________________ >      
+|     |      |
+GDSCC MDSCC  CDSCC
+|____  |________  |_________
+     |          |           |
+     |          |           |
+    SPC        SPC         SPC
+     |          |           |
+Multiple DSS  Mutiple DSS  Multiple DSS
+
+
+
+
 The DSN is an extremely complex facility, but it becomes more easily comprehensible if we recognize its **seven data types**. In the past, each of these seven data types was associated with a separate DSN system.
 
 Today, thanks to the Network Simplification Program, these have been consolidated into two DSN systems: **Uplink (The Uplink Tracking and Command Subsystem, UPL)** and **Downlink (The Downlink Tracking & Telemetry Subsystem, DTT)**.
