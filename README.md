@@ -1,7 +1,8 @@
 # Deep-Space-Network - Presentation Summary
 
 ## Infrastructure Summary
-<pre> ```__________________
+<pre>
+__________________
 Deep Space Network
 __________________
 |____ |______|___|______________ > 
