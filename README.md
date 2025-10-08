@@ -1,7 +1,7 @@
 # Deep-Space-Network - Presentation Summary
 
 ## Infrastructure Summary
-__________________
+<pre> ```__________________
 Deep Space Network
 __________________
 |____ |______|___|______________ > 
@@ -14,7 +14,7 @@ GDSCC MDSCC  CDSCC
      |          |           |
     SPC        SPC         SPC
      |          |           |
-Multiple DSS  Mutiple DSS  Multiple DSS
+Multiple DSS  Mutiple DSS  Multiple DSS</pre>
 
 
 
