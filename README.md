@@ -1,61 +1,47 @@
-# Deep-Space-Network - Presentation Summary
+# 📡 DSNSim: Deep Space Network (DSN) Transceiver Simulator
 
-## Infrastructure Summary
-<pre>
-__________________
-Deep Space Network
-__________________                  ______  
-|____ |______|___|______________ > |      |
-|     |______|___|______________ > | NOCC |
-|     |      |__________________ > |______|
-|     |      |                       
-GDSCC CDSCC  MDSCC
-|____  |________  |_________
-     |          |           |
-     |          |           |
-    SPC        SPC         SPC
-     |          |           |
-Multiple DSS  Mutiple DSS  Multiple DSS
-     |          |           |__________________________________________________________________
-     |          |___________________________________________                                   |
- ____|_________________________________________     ________|____________________     _________|______________________
-|DSS13, DSS14, DSS15, DSS24, DSS25, DSS26, etc.|   |DSS34, DSS43, DSS45 and DSS46|   | DSS54, DSS55, DSS65, and DSS63 |
-|__________|______|_____|______|_______|_______|   |___|_____|_______|___________|   |___|_____________|__________|___|
-           |      |     |      |       |               |     |       |                   |             |          |
-           |      |     |      |       |               |     |       |                   |             |          |
-           |______|_____|______|_______|_______________|_____|_______|___________________|_____________|__________|
-                  |     |      |       |          _____|     |       |___________        |             |
-                  |     |      |       |         |    _______|_________          |       |             |
-                  |     |      |       |         |   |    70 m Subnet  |         |       |             |
-                  |     |      |       |         |   |_________________|         |       |             |  
-                  |_____|______|_______|_________|_______________________________|_______|_____________|
-                        |      |       |   ______|         |                             |
-                        |      |       |  |        ________|_________                    |
-                        |      |       |  |       | 34 m HEF Subnet  |                   |
-                        |      |       |  |       |__________________|                   |
-                        |______|_______|__|______________________________________________|
-                                                   |
-                                            _______|_________
-                                           | 34 m BWG Subnet |
-                                           |_________________|        
-</pre>
+## ✨ Project Summary
 
+DSNSim utilizes an Arduino MKR WiFi 1010 to simulate a single Deep Space Station (DSS) acting as a transceiver. It models the core functions of the DSN by using a 433MHz RF module to physically send (Uplink) and receive (Downlink) a stream of simulated deep space communication data types (Telemetry, Command, Tracking).
 
+The use of a common transceiver setup emphasizes the shared hardware component used for both sending and receiving signals, simulating a crucial aspect of modern deep space communication systems.
 
+## 💻 Code and Hardware Details
 
-The DSN is an extremely complex facility, but it becomes more easily comprehensible if we recognize its **seven data types**. In the past, each of these seven data types was associated with a separate DSN system.
+### Target Hardware
+- Microcontroller: Arduino MKR WiFi 1010
 
-Today, thanks to the Network Simplification Program, these have been consolidated into two DSN systems: **Uplink (The Uplink Tracking and Command Subsystem, UPL)** and **Downlink (The Downlink Tracking & Telemetry Subsystem, DTT)**.
+- RF Module: 433MHz RF Transmitter and Receiver Pair
 
-The seven data-types include:
-- **Frequency & Timing Data Type, FT&T** : It is the DSN’s internal clock, providing ultra-precise time and frequency signals that synchronize all network operations. Using hydrogen masers, cesium standards, and GPS calibration, it keeps all DSN stations aligned within fractions of a microsecond. 
+- Role: Simulated Deep Space Station (DSS) Transceiver.
 
-- **Tracking Data Type, TRK** : The DSN uses Doppler and ranging measurements to precisely determine a spacecraft’s velocity, distance, and trajectory. These data help generate predicts for antenna pointing and frequency control to maintain communication with spacecraft.
+### Wireless Communication
+- Frequency: 433MHz (A common, unlicensed frequency band for short-range radio communication).
 
-- **Telemetry Data Type, TLM** : Telemetry (TLM) data represents a spacecraft’s engineering and scientific measurements transmitted as digital signals. The DSN decodes these signals and delivers the data for analysis, monitoring, and scientific use.
+- Modulation: Typically Amplitude Shift Keying (ASK), where the carrier wave's amplitude is switched ON (HIGH) or OFF (LOW) to transmit binary data. This is a simplified, yet functional, model of the complex RF communication used by the DSN.
 
-- **Command Data Type, CMD** : Consists of digital instructions sent from Earth to control spacecraft operations. The DSN’s uplink system transmits these bits, which the spacecraft interprets as commands or software updates.
+- Library: The project relies on RadioHead library to handle the encoding and decoding of the serial data for reliable wireless transmission.
 
-- **Monitor Data Type, MON** : Provides information about the DSN’s own performance and health. It’s collected across DSN subsystems to manage operations, ensure reliability, and assist flight projects in monitoring signal quality in real time.
+## 🛠️ Setup and Running the Simulator
 
-- **Radio Science Data Type, RS** : Radio Science (RS) data treats the spacecraft radio and DSN as a scientific instrument to study how signals are affected by planets, moons, the Sun, or other structures.Using open-loop receivers, RS captures a range of frequencies to measure Doppler shifts, refraction, attenuation, and other signal modifications.
+### Prerequisites
+- Arduino IDE: Latest version installed.
+
+- Arduino SAMD Boards: Board package installed for the MKR family.
+
+- Library: Install the required RadioHead library via the Arduino IDE's Library Manager (Sketch > Include Library > Manage Libraries...).
+
+### Execution Steps
+- Wiring: Connect the 433MHz transmitter and receiver modules to your Arduino MKR WiFi 1010 based on the pin definitions in the ```main.ino``` sketch.
+
+- Antenna: Attach a 17.3 cm wire to the antenna pin of both the transmitter and receiver for optimal 433MHz range (this is approximately a quarter-wavelength antenna).
+
+- Upload the Code: Compile and upload the main.ino sketch to your Arduino MKR WiFi 1010.
+
+- Monitor the Simulation: Open the Serial Monitor to observe the flow of simulated DSN data being encoded (for Uplink) and decoded (for Downlink) by the 433MHz RF modules by virtue of the commands ```uplink``` and ```downlink``` respectively.
+
+## 🔬 Next Steps for Development
+
+- Signal Strength: Use the RadioHead library features (if available) or simply add noise modeling to simulate the signal strength and distance challenges inherent in DSN communication.
+
+- Error Correction: Implement a simple checksum or cyclic redundancy check (CRC) to simulate how DSN data ensures integrity over long, noisy links.
