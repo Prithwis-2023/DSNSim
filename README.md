@@ -1,5 +1,9 @@
 # 📡 DSNSim: Deep Space Network (DSN) Transceiver Simulator
 
+<p align="center">
+	<img width="600" height="600" alt="image" src="https://github.com/user-attachments/assets/57f3943c-9474-4a41-88ab-106cdb240493" />
+</p>
+
 ## ✨ Project Summary
 
 DSNSim utilizes an Arduino MKR WiFi 1010 to simulate a single Deep Space Station (DSS) acting as a transceiver. It models the core functions of the DSN by using a 433MHz RF module to physically send (Uplink) and receive (Downlink) a stream of simulated deep space communication data types (Telemetry, Command, Tracking).
@@ -45,3 +49,6 @@ The use of a common transceiver setup emphasizes the shared hardware component u
 - Signal Strength: Use the RadioHead library features (if available) or simply add noise modeling to simulate the signal strength and distance challenges inherent in DSN communication.
 
 - Error Correction: Implement a simple checksum or cyclic redundancy check (CRC) to simulate how DSN data ensures integrity over long, noisy links.
+
+## 📜 Credits
+The project was developed by 최형찬 and Prithwis Das.
